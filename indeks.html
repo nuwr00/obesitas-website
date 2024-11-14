@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Edukasi Obesitas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 1em;
+            text-align: center;
+        }
+        main {
+            max-width: 800px;
+            margin: auto;
+            padding: 1em;
+        }
+        h2 {
+            color: #4CAF50;
+        }
+        .bmi-calculator {
+            margin-top: 1em;
+            padding: 1em;
+            border: 1px solid #ddd;
+            background-color: #fff;
+        }
+        .bmi-calculator input {
+            margin: 0.5em;
+        }
+        .image-section img {
+            width: 100%;
+            height: auto;
+            margin: 0.5em 0;
+            border-radius: 8px;
+        }
+        footer {
+            background-color: #333;
+            color: #f4f4f4;
+            text-align: center;
+            padding: 1em;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Website Edukasi Obesitas</h1>
+</header>
+
+<main>
+    <section class="image-section">
+        <img src="obesitas.jpg">
+    </section>
+
+    <section>
+        <h2>Apa Itu Obesitas?</h2>
+        <p>Obesitas adalah kondisi medis yang ditandai dengan penumpukan lemak tubuh berlebihan yang dapat memengaruhi kesehatan. Obesitas meningkatkan risiko berbagai penyakit seperti penyakit jantung, diabetes, dan beberapa jenis kanker.</p>
+    </section>
+
+    <section>
+        <h2>Penyebab Obesitas</h2>
+        <ul>
+            <li>Pola makan dan kebiasaan makan yang buruk</li>
+            <li>Kurangnya aktivitas fisik</li>
+            <li>Faktor genetik dan riwayat keluarga</li>
+            <li>Kondisi medis tertentu</li>
+            <li>Pengaruh obat-obatan tertentu</li>
+        </ul>
+        <img src="obesitas2.jpg" alt="Image showing causes of obesity" class="image-section">
+    </section>
+
+    <section class="bmi-calculator">
+        <h2>Kalkulator BMI</h2>
+        <p>Masukkan tinggi dan berat badan Anda untuk menghitung BMI dan mengetahui status kesehatan Anda:</p>
+        <label for="weight">Berat badan (kg):</label>
+        <input type="number" id="weight" placeholder="misal: 70">
+        <label for="height">Tinggi badan (cm):</label>
+        <input type="number" id="height" placeholder="misal: 170">
+        <button onclick="calculateBMI()">Hitung BMI</button>
+        <p id="bmiResult"></p>
+    </section>
+
+    <section>
+        <h2>Tips Mencegah Obesitas</h2>
+        <ul>
+            <li>Konsumsi makanan seimbang dan bergizi</li>
+            <li>Lakukan aktivitas fisik secara rutin</li>
+            <li>Hindari minuman dan camilan manis</li>
+            <li>Pastikan tidur cukup</li>
+            <li>Kelola stres dengan baik</li>
+        </ul>
+    </section>
+</main>
+
+<script>
+    function calculateBMI() {
+        const weight = parseFloat(document.getElementById("weight").value);
+        const height = parseFloat(document.getElementById("height").value) / 100; // konversi ke meter
+
+        if (isNaN(weight) || isNaN(height)) {
+            document.getElementById("bmiResult").innerText = "Masukkan angka yang valid untuk berat dan tinggi badan.";
+            return;
+        }
+
+        const bmi = weight / (height * height);
+        let message;
+
+        if (bmi < 18.5) {
+            message = "Anda kekurangan berat badan. Pertimbangkan untuk berkonsultasi dengan profesional kesehatan.";
+        } else if (bmi >= 18.5 && bmi < 24.9) {
+            message = "Berat badan Anda normal. Pertahankan gaya hidup sehat!";
+        } else if (bmi >= 25 && bmi < 29.9) {
+            message = "Anda kelebihan berat badan. Pertimbangkan untuk melakukan perubahan gaya hidup.";
+        } else {
+            message = "Anda mengalami obesitas. Sebaiknya berkonsultasi dengan penyedia layanan kesehatan.";
+        }
+
+        document.getElementById("bmiResult").innerText = `BMI Anda adalah ${bmi.toFixed(1)}. ${message}`;
+    }
+</script>
+
+</body>
+</html>
